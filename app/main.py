@@ -6,7 +6,7 @@ import numpy as np
 app = FastAPI()
 
 with open("model/model.pkl", "rb") as f:
-    model = pickle.load(f
+    model = pickle.load(f)
 
 class IrisRequest(BaseModel):
     sepal_length: float
