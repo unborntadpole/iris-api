@@ -4,14 +4,14 @@ pipeline {
   stages {
     stage('Setup') {
       steps {
-        powershell 'python --version'
-        powershell 'pip install -r requirements.txt'
+        sh 'python3 --version'
+        sh 'pip3 install -r requirements.txt'
       }
     }
 
     stage('Test') {
       steps {
-        powershell 'pytest tests/'
+        sh 'pytest tests/'
       }
     }
   }
