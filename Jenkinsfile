@@ -2,13 +2,15 @@ pipeline {
   agent {
     docker {
       image 'python:3.11-slim'
+      args '-u root'
     }
   }
+
   stages {
-    stage('Debug') {
+    stage('Test') {
       steps {
-        sh 'echo $SHELL'
         sh 'python --version'
+        sh 'pytest tests/'
       }
     }
   }
