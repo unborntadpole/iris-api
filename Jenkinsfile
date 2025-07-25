@@ -1,16 +1,17 @@
 pipeline {
-  agent {
-    docker {
-      image 'python:3.11-slim'
-      args '-u root'
-    }
-  }
+  agent any
 
   stages {
+    stage('Setup') {
+      steps {
+        bat 'python --version'
+        bat 'pip install -r requirements.txt'
+      }
+    }
+
     stage('Test') {
       steps {
-        sh 'python --version'
-        sh 'pytest tests/'
+        bat 'pytest tests/'
       }
     }
   }
