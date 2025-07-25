@@ -1,20 +1,25 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'python:3.11-slim'       // Choose your base image
+            args '-v /var/run/docker.sock:/var/run/docker.sock' // Optional: allows building containers from within
+        }
+    }
 
     stages {
         stage('Install') {
             steps {
-                bat 'pip install -r requirements.txt'
+                sh 'pip install -r requirements.txt'
             }
         }
         stage('Test') {
             steps {
-                bat 'pytest tests/'
+                sh 'pytest tests/'
             }
         }
         stage('Docker Build') {
             steps {
-                bat 'docker build -t iris-api .'
+                sh 'docker build -t iris-api .'
             }
         }
     }
