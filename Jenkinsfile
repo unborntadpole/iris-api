@@ -38,9 +38,7 @@ pipeline {
     
     stage('Cleanup') {
       steps {
-        bat 'docker stop $(docker ps -aq)'
-        bat 'docker rm $(docker ps -aq)'
-        bat 'docker rmi iris-fastapi-app'
+        bat 'for /f %i in (\'docker ps -q\') do docker stop %i'
       }
     }
   }
