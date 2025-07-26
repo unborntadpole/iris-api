@@ -17,5 +17,17 @@ pipeline {
         bat 'python test_api.py'
       }
     }
+
+    stage('Docker Build') {
+      steps {
+        bat 'docker build -t iris-fastapi-app .'
+      }
+    }
+
+    stage('Docker Run') {
+      steps {
+        bat 'docker run -d -p 8000:8000 iris-fastapi-app'
+      }
+    }
   }
 }
