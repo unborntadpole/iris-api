@@ -17,7 +17,9 @@ def test_prediction():
     response = client.post("/predict", json=sample)
     assert response.status_code == 200
     assert "predicted_class" in response.json()
+    return response.json()["predicted_class"]
 
 if __name__ == "__main__":
-    test_prediction()
-    print("✅ Test completed.")
+    prediction = test_prediction()
+    print("Predicted class:", prediction)
+    print("Test completed.")
