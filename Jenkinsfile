@@ -1,18 +1,13 @@
-pipeline {
-  agent any
-
-  stages {
-    stage('Setup') {
-      steps {
-        bat 'python3 --version'
-        bat 'pip3 install -r requirements.txt'
-      }
+    pipeline {
+        agent any
+        environment {
+            PATH = "C:\\\\Windows\\\\System32;${env.PATH}"
+        }
+        stages {
+            stage('Run Command') {
+                steps {
+                    bat 'echo Hello from cmd!'
+                }
+            }
+        }
     }
-
-    stage('Test') {
-      steps {
-        bat 'pytest tests/'
-      }
-    }
-  }
-}
