@@ -24,11 +24,11 @@ pipeline {
       }
     }
 
-    stage('Docker Run') {
-      steps {
-        bat 'docker run -d -p 8000:8000 iris-fastapi-app'
-      }
-    }
+    // stage('Docker Run') {
+    //   steps {
+    //     bat 'docker run -d -p 8000:8000 iris-fastapi-app'
+    //   }
+    // }
 
     // stage('Ping API') {
     //     steps {
