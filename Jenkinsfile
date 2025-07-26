@@ -8,13 +8,13 @@ pipeline {
       steps {
         bat 'python --version'
         bat 'pip install -r requirements.txt'
-        bat 'python app/iris_model.py'
+        bat 'python iris_model.py'
       }
     }
 
     stage('Test') {
       steps {
-        bat 'python test/test_api.py'
+        bat 'python test_api.py'
       }
     }
   }
