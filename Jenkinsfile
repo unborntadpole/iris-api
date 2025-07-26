@@ -1,8 +1,7 @@
 pipeline {
     agent any
     environment {
-        PATH = "C:\\\\Windows\\\\System32;${env.PATH}"
-        PATH = "C:\\\\Program Files\\\\Docker\\\\Docker\\\\resources\\\\bin;${env.PATH}"
+        PATH = "C:\\Windows\\System32;C:\\Program Files\\Docker\\Docker\\resources\\bin;${env.PATH}"
     }
       stages {
     stage('Setup') {
