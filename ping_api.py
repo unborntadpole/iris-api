@@ -10,6 +10,7 @@ sample = {
 url = "http://localhost:8000/predict"
 for attempt in range(10):
     try:
+        time.sleep(5)
         response = requests.post(url, json=sample)
         print("Status Code:", response.status_code)
         print("Response:", response.json())
