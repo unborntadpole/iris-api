@@ -3,6 +3,7 @@ pipeline {
     environment {
         PATH = "C:\\\\Windows\\\\System32;${env.PATH}"
     }
+      stages {
     stage('Setup') {
       steps {
         bat 'python --version'
@@ -16,3 +17,4 @@ pipeline {
       }
     }
   }
+}
