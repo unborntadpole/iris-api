@@ -37,9 +37,11 @@ pipeline {
     }
     
     stage('Cleanup') {
-      steps {
-        bat 'for /f %i in (\'docker ps -q\') do docker stop %i'
-      }
+        steps {
+            bat 'timeout /t 5'
+            bat 'for /f %i in (\'docker ps -q\') do docker stop %i || echo Container not running'
+            bat 'for /f %i in (\'docker ps -aq\') do docker rm %i || echo Container not found'
+        }
     }
   }
 }
