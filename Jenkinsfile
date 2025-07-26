@@ -8,6 +8,7 @@ pipeline {
       steps {
         bat 'python --version'
         bat 'pip install -r requirements.txt'
+        bat 'python .\app\iris_model.py'
       }
     }
 
