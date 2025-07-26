@@ -29,5 +29,19 @@ pipeline {
         bat 'docker run -d -p 8000:8000 iris-fastapi-app'
       }
     }
+
+    stage('Ping API') {
+        steps {
+            bat 'python ping_api.py'
+        }
+    }
+    
+    stage('Cleanup') {
+      steps {
+        bat 'docker stop $(docker ps -aq)'
+        bat 'docker rm $(docker ps -aq)'
+        bat 'docker rmi iris-fastapi-app'
+      }
+    }
   }
 }
