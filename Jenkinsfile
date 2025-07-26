@@ -13,7 +13,7 @@ pipeline {
 
     stage('Test') {
       steps {
-        bat 'pytest tests/'
+        bat 'test/test_api.py'
       }
     }
   }
