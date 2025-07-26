@@ -1,4 +1,6 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
 from pydantic import BaseModel
 import pickle
 import numpy as np
@@ -8,6 +10,15 @@ import numpy as np
 # sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # You can restrict this later to specific origins
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 with open("model/model.pkl", "rb") as f:
     model = pickle.load(f)
