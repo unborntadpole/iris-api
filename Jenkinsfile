@@ -38,7 +38,7 @@ pipeline {
     
     stage('Cleanup') {
         steps {
-            bat 'timeout /t 5'
+            bat 'ping -n 6 127.0.0.1 >nul'
             bat 'for /f %i in (\'docker ps -q\') do docker stop %i || echo Container not running'
             bat 'for /f %i in (\'docker ps -aq\') do docker rm %i || echo Container not found'
         }
