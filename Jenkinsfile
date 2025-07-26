@@ -24,24 +24,24 @@ pipeline {
       }
     }
 
-    stage('Docker Run') {
-      steps {
-        bat 'docker run -d -p 8000:8000 iris-fastapi-app'
-      }
-    }
+    // stage('Docker Run') {
+    //   steps {
+    //     bat 'docker run -d -p 8000:8000 iris-fastapi-app'
+    //   }
+    // }
 
-    stage('Ping API') {
-        steps {
-            bat 'python ping_api.py'
-        }
-    }
+    // stage('Ping API') {
+    //     steps {
+    //         bat 'python ping_api.py'
+    //     }
+    // }
     
-    stage('Cleanup') {
-        steps {
-            bat 'ping -n 6 127.0.0.1 >nul'
-            bat 'for /f %i in (\'docker ps -q\') do docker stop %i || echo Container not running'
-            bat 'for /f %i in (\'docker ps -aq\') do docker rm %i || echo Container not found'
-        }
-    }
+    // stage('Cleanup') {
+    //     steps {
+    //         bat 'ping -n 6 127.0.0.1 >nul'
+    //         bat 'for /f %i in (\'docker ps -q\') do docker stop %i || echo Container not running'
+    //         bat 'for /f %i in (\'docker ps -aq\') do docker rm %i || echo Container not found'
+    //     }
+    // }
   }
 }
