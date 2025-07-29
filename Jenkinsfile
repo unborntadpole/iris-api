@@ -6,41 +6,41 @@ pipeline {
       stages {
     stage('Setup') {
       steps {
-        bat 'python --version'
-        bat 'pip install -r requirements.txt'
-        bat 'python iris_model.py'
+        sh 'python --version'
+        sh 'pip install -r requirements.txt'
+        sh 'python iris_model.py'
       }
     }
 
     stage('Test') {
       steps {
-        bat 'python test_api.py'
+        sh 'python test_api.py'
       }
     }
 
     stage('Docker Build') {
       steps {
-        bat 'docker build -t iris-fastapi-app .'
+        sh 'docker build -t iris-fastapi-app .'
       }
     }
 
     stage('Docker Run') {
       steps {
-        bat 'docker run -d -p 8000:8000 iris-fastapi-app'
+        sh 'docker run -d -p 8000:8000 iris-fastapi-app'
       }
     }
 
     // stage('Ping API') {
     //     steps {
-    //         bat 'python ping_api.py'
+    //         sh 'python ping_api.py'
     //     }
     // }
     
     // stage('Cleanup') {
     //     steps {
-    //         bat 'ping -n 6 127.0.0.1 >nul'
-    //         bat 'for /f %i in (\'docker ps -q\') do docker stop %i || echo Container not running'
-    //         bat 'for /f %i in (\'docker ps -aq\') do docker rm %i || echo Container not found'
+    //         sh 'ping -n 6 127.0.0.1 >nul'
+    //         sh 'for /f %i in (\'docker ps -q\') do docker stop %i || echo Container not running'
+    //         sh 'for /f %i in (\'docker ps -aq\') do docker rm %i || echo Container not found'
     //     }
     // }
   }
