@@ -24,7 +24,7 @@ pipeline {
 
     stage('Docker Run') {
       steps {
-        sh 'docker run -d -p 8000:8000 iris-fastapi-app'
+        sh 'export PATH="/opt/homebrew/bin:$PATH" && docker build -t iris-fastapi-app .'
       }
     }
 
