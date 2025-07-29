@@ -4,6 +4,7 @@ pipeline {
     stage('Setup') {
       steps {
         sh 'export PATH="/opt/homebrew/bin:$PATH" && python3 --version'
+
         sh 'python3 --version'
         sh 'python3 -m pip install -r requirements.txt'
         sh 'python3 iris_model.py'
@@ -18,13 +19,13 @@ pipeline {
 
     stage('Docker Build') {
       steps {
-        sh 'docker build -t iris-fastapi-app .'
+        sh '/usr/local/bin/docker build -t iris-fastapi-app .'
       }
     }
 
     stage('Docker Run') {
       steps {
-        sh 'export PATH="/opt/homebrew/bin:$PATH" && docker build -t iris-fastapi-app .'
+        sh '/usr/local/bin/docker run -d -p 8000:8000 iris-fastapi-app'
       }
     }
 
