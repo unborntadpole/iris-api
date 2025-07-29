@@ -14,7 +14,7 @@ pipeline {
 
     stage('Test') {
       steps {
-        sh 'python test_api.py'
+        sh 'python3 test_api.py'
       }
     }
 
