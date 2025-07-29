@@ -6,9 +6,9 @@ pipeline {
       stages {
     stage('Setup') {
       steps {
-        sh 'python --version'
-        sh 'pip install -r requirements.txt'
-        sh 'python iris_model.py'
+        sh 'python3 --version'
+        sh 'python3 -m pip install -r requirements.txt'
+        sh 'python3 iris_model.py'
       }
     }
 
