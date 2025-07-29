@@ -1,11 +1,9 @@
 pipeline {
     agent any
-    environment {
-        PATH = "C:\\Windows\\System32;C:\\Program Files\\Docker\\Docker\\resources\\bin;${env.PATH}"
-    }
       stages {
     stage('Setup') {
       steps {
+        sh 'export PATH="/opt/homebrew/bin:$PATH" && python3 --version'
         sh 'python3 --version'
         sh 'python3 -m pip install -r requirements.txt'
         sh 'python3 iris_model.py'
